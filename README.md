@@ -1,24 +1,22 @@
-# Vavoo Worker GitHub
+# Vavoo Worker - Milano placement test
 
 Repository pronto per Cloudflare Workers.
 
-## Test
+## File principale
+`index.js`
 
+## Placement
+`wrangler.jsonc` usa:
+
+`aws:eu-south-1`
+
+## Test
 Dopo il deploy:
 
-`https://TUO-WORKER.workers.dev/__test`
+- `/__test`
+- `/__where`
 
-deve restituire un JSON con `ok: true`.
+Per controllare il colo:
+`https://vavoo-worker.horubatounsus.workers.dev/__where`
 
-## Cloudflare
-
-Workers & Pages → Create application → Import a repository → GitHub → seleziona questo repository.
-
-Build command:
-`npm run deploy`
-
-Root directory:
-`/`
-
-Production branch:
-`main`
+Se compare `MXP`, il Worker sta girando sul colo di Milano.

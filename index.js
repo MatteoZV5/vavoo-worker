@@ -13,6 +13,17 @@ export default {
         });
       }
 
+      if (incoming.pathname === "/__where") {
+        return Response.json({
+          ok: true,
+          colo: request.cf?.colo || null,
+          country: request.cf?.country || null,
+          city: request.cf?.city || null,
+          region: request.cf?.region || null,
+          timezone: request.cf?.timezone || null
+        });
+      }
+
       const target = new URL(
         incoming.pathname + incoming.search,
         ORIGIN
@@ -20,7 +31,6 @@ export default {
 
       const headers = new Headers(request.headers);
 
-      // Non inoltrare header specifici della richiesta verso Cloudflare.
       headers.delete("host");
       headers.delete("cf-connecting-ip");
       headers.delete("cf-ipcountry");
